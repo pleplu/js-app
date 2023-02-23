@@ -1,7 +1,5 @@
-alert('Hello world');
-
-let myAge = 23;
-let myName = 'William';
-
-let favoriteFood = 'smoothie';
-document.write(favoriteFood);
+exoticWeapons = [
+    {name: "sunshot", energy: "solar", ammoType: "kinetic"},
+    {name: "riskrunner", energy: "arc", ammoType: "kinetic"},
+    {name: "fighting lion", energy: "void", ammoType: "special"}
+];

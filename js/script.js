@@ -15,31 +15,57 @@ let exoticWeaponsRepository = (function () {
         return exoticWeapons;
     }
 
+    function addListItem(exoticWeapons) {
+        let exoticWeaponsList = document.querySelector(".exotic-weapons-list");
+        let listItem = document.createElement("li");
+        let button = document.createElement("button");
+        button.innerHTML = exoticWeapons.name;
+        button.classList.add("exotic-weapon");
+        listItem.appendChild(button);
+        exoticWeaponsList.appendChild(listItem);
+        button.addEventListener("click", function () {
+            console.log(showDetails(exoticWeapons))
+        });
+    }
+
+    function showDetails(exoticWeapons) {
+        console.log(exoticWeapons.name);
+        console.log(exoticWeapons.weaponType)
+    }
+
     return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem
     };
 })();
 
 // ==========================================================================================================
 
-// List object's names and characteristics using a "forEach" loop and a function both inside and otuside said loop as well as an arrow function:
+// Adds a list of buttons
 
 exoticWeaponsRepository.getAll().forEach(function(exoticWeapons) {
-    document.write("<p>" + exoticWeapons.name + " : " + exoticWeapons.weaponType);
-    if (exoticWeapons.energy === "Solar"){
-        document.write(" - this is a solar weapon. " + "</p>");
-    }else if (exoticWeapons.energy === "Arc"){
-        document.write(" - this is an arc weapon. " + "</p>");
-    }else if (exoticWeapons.energy === "Void"){
-        document.write(" - this is a void weapon. " + "</p>");
-    }else{
-        document.write(" - this weapon alternates between all three energy types. " + "</p>");
-    }
+    exoticWeaponsRepository.addListItem(exoticWeapons);
 });
 
-// exoticWeaponsRepository.getAll().forEach( exoticWeapons => document.write("<p>" + exoticWeapons.name + "</p>"));
+// ==========================================================================================================
 
+// List object's names and characteristics using a "forEach" loop and a function both inside and otuside said loop as well as an arrow function:
+
+// exoticWeaponsRepository.getAll().forEach(function(exoticWeapons) {
+//     document.write("<p>" + exoticWeapons.name + " : " + exoticWeapons.weaponType);
+//     if (exoticWeapons.energy === "Solar"){
+//         document.write(" - this is a solar weapon. " + "</p>");
+//     }else if (exoticWeapons.energy === "Arc"){
+//         document.write(" - this is an arc weapon. " + "</p>");
+//     }else if (exoticWeapons.energy === "Void"){
+//         document.write(" - this is a void weapon. " + "</p>");
+//     }else{
+//         document.write(" - this weapon alternates between all three energy types. " + "</p>");
+//     }
+// });
+
+// exoticWeaponsRepository.getAll().forEach( exoticWeapons => document.write("<p>" + exoticWeapons.name + "</p>"));
 
 // function listNames(exoticWeapons) {
 //     document.write("<p>" + exoticWeapons.name + "</p>");
@@ -77,4 +103,3 @@ exoticWeaponsRepository.getAll().forEach(function(exoticWeapons) {
 // printArrayDetails(exoticWeaponsRepository.getAll());
 
 // ==========================================================================================================
-

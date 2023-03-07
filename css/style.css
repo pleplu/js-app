@@ -4,3 +4,16 @@ body {
     font-family: 'Roboto Mono', monospace;
     color: #0d0d0d;
 }
+
+.exotic-weapons-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.exotic-weapon {
+    color: #0d0d0d;
+    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+    margin-bottom: 16px;
+}
+

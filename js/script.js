@@ -1,52 +1,52 @@
 // An array of different exotic weapons wrapped inside of an IIFE :
 
-let exoticWeaponsRepository = (function () {
-    let exoticWeapons = [
-        {name: "Sunshot", weaponType: "Hand Cannon", energy: "Solar", ammoType: "Primary"},
-        {name: "Riskrunner", weaponType: "SMG", energy: "Arc", ammoType: "Primary"},
-        {name: "Fighting Lion", weaponType: "Grenade Launcher", energy: "Void", ammoType: "Special"}
-    ];
+// let exoticWeaponsRepository = (function () {
+//     let exoticWeapons = [
+//         {name: "Sunshot", weaponType: "Hand Cannon", energy: "Solar", ammoType: "Primary"},
+//         {name: "Riskrunner", weaponType: "SMG", energy: "Arc", ammoType: "Primary"},
+//         {name: "Fighting Lion", weaponType: "Grenade Launcher", energy: "Void", ammoType: "Special"}
+//     ];
 
-    function add(weapon) {
-        exoticWeapons.push(weapon);
-    }
+//     function add(weapon) {
+//         exoticWeapons.push(weapon);
+//     }
 
-    function getAll() {
-        return exoticWeapons;
-    }
+//     function getAll() {
+//         return exoticWeapons;
+//     }
 
-    function addListItem(exoticWeapons) {
-        let exoticWeaponsList = document.querySelector(".exotic-weapons-list");
-        let listItem = document.createElement("li");
-        let button = document.createElement("button");
-        button.innerHTML = exoticWeapons.name;
-        button.classList.add("exotic-weapon");
-        listItem.appendChild(button);
-        exoticWeaponsList.appendChild(listItem);
-        button.addEventListener("click", function () {
-            console.log(showDetails(exoticWeapons))
-        });
-    }
+//     function addListItem(exoticWeapons) {
+//         let exoticWeaponsList = document.querySelector(".exotic-weapons-list");
+//         let listItem = document.createElement("li");
+//         let button = document.createElement("button");
+//         button.innerHTML = exoticWeapons.name;
+//         button.classList.add("exotic-weapon");
+//         listItem.appendChild(button);
+//         exoticWeaponsList.appendChild(listItem);
+//         button.addEventListener("click", function () {
+//             console.log(showDetails(exoticWeapons))
+//         });
+//     }
 
-    function showDetails(exoticWeapons) {
-        console.log(exoticWeapons.name);
-        console.log(exoticWeapons.weaponType)
-    }
+//     function showDetails(exoticWeapons) {
+//         console.log(exoticWeapons.name);
+//         console.log(exoticWeapons.weaponType)
+//     }
 
-    return {
-        add: add,
-        getAll: getAll,
-        addListItem: addListItem
-    };
-})();
+//     return {
+//         add: add,
+//         getAll: getAll,
+//         addListItem: addListItem
+//     };
+// })();
 
 // ==========================================================================================================
 
 // Adds a list of buttons
 
-exoticWeaponsRepository.getAll().forEach(function(exoticWeapons) {
-    exoticWeaponsRepository.addListItem(exoticWeapons);
-});
+// exoticWeaponsRepository.getAll().forEach(function(exoticWeapons) {
+//     exoticWeaponsRepository.addListItem(exoticWeapons);
+// });
 
 // ==========================================================================================================
 

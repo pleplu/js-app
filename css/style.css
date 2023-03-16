@@ -4,6 +4,7 @@ body {
     font-size: 18px;
     font-family: 'Roboto Mono', monospace;
     color: #0d0d0d;
+    min-width: fit-content;
 }
 
 .pokemon-list {
@@ -17,17 +18,10 @@ body {
     font-family: 'Roboto Mono', monospace;
     margin-bottom: 16px;
     padding-inline: 8px;
-    
-}
-
-@supports (display: grid) {
-    #grid {
-      display: -ms-grid;
-      display: grid;
-      -ms-grid-columns: 1fr 8px 1fr 8px 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 8px;
-    }
+    text-transform: uppercase;
+    width: 200px;
+    height: 50px;
+    border-radius: 5%;
 }
 
 #modal-container {
@@ -56,13 +50,13 @@ body {
     background: #fff;
     padding: 15px;
     width: 100%;
-    max-width: 700px;
+    max-width: 350px;
     text-align: left;
   }
 
 .modal-close {
     float: right;
-border: 0;
+    border: 0;
     background: none;
     color: #777;
     text-decoration: underline;
@@ -70,8 +64,13 @@ border: 0;
 
 .modal h1 {
     margin-top: 0;
-  }
+    text-transform: uppercase;
+}
   
 .modal p {
-    margin-bottom: 0;
-  }
+    margin-bottom: 8px;
+}
+
+.modal img {
+    margin: 0 auto;
+}

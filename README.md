@@ -1,1 +1,1 @@
-# js-app
+An app that displays Pokemon data when the corresponding Pokemon button is clicked

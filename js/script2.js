@@ -25,7 +25,7 @@ let pokemonRepository = (function () {
     }
     
         
-    // Creates a list of buttons of the pokemons' names and includes an event listener when users click said buttons that logs pokemons' details in the console
+    // Creates a list of buttons of the pokemons' names and includes an event listener when users click said buttons that shows some of the pokemons' details
         
     function addListItem(pokemon) {
         let pokemonList = document.querySelector(".pokemon-list");
@@ -41,7 +41,7 @@ let pokemonRepository = (function () {
     }
     
 
-    // Fetches details from the API and displays a list of the contents when performed and catches any errors
+    // Fetches details from the API and and catches any errors
 
     function loadList() {
         return fetch(apiUrl).then(function (response)   {
@@ -96,7 +96,7 @@ let pokemonRepository = (function () {
     
         let closeButtonElement = document.createElement("button");
         closeButtonElement.classList.add("modal-close");
-        closeButtonElement.innerText = "Close";
+        closeButtonElement.innerText = "X";
         closeButtonElement.addEventListener("click", hideModal);
     
         let titleElement = document.createElement("h1");

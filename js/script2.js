@@ -89,28 +89,39 @@ let pokemonRepository = (function () {
       
       function showDetails(pokemon) {
         loadDetails(pokemon).then(function () {
-          showModal("#" + pokemon.id, ". " + pokemon.name, "Height: " + pokemon.height + "dm", pokemon.imageUrl);
+          showModal(pokemon);
         });
       }
 
 
       // Displays a modal 
 
-      function showModal(number, title, text, image) {
+      function showModal(item) {
+
+        pokemonRepository.loadDetails(item).then(function () {
 
         let modalNumber = document.querySelector(".modal-number")
-        modalNumber.innerHTML = number;
+        modalNumber.innerHTML = "#" + item.id;
     
         let modalTitle = document.querySelector(".modal-title");
-        modalTitle.innerText = title;
+        modalTitle.innerText = ". " + item.name;
 
-        let modalText = document.querySelector(".modal-text");
-        modalText.innerText = text;
+        let pokemonHeight = document.querySelector(".pokemon-height");
+        pokemonHeight.innerHTML = "Height: " + "<br>" + (item.height/10) + "m";
 
-        let modalImg = document.querySelector(".modal-img");
-        modalImg.src = image;
+        let itemTypes = "";
+        item.types.forEach(function(types) {
+          itemTypes += [types.type.name + "<br>"];
+        });
+
+        let pokemonTypes = document.querySelector(".pokemon-types");
+        pokemonTypes.innerHTML = "Types: " + "<br>" + itemTypes;
+
+        let pokemonImg = document.querySelector(".pokemon-img");
+        pokemonImg.src = item.imageUrl;
     
-    }
+    })
+  }
 
     return {
         add: add,

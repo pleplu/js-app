@@ -1,9 +1,20 @@
 body {
     text-align: center;
-    font-size: 26px;
+    font-size: 12px;
     font-family: 'Roboto Mono', monospace;
     color: #0d0d0d;
-    min-width: fit-content;
+    min-width: 440px;
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+
+#pokedex-title {
+    width: 400px;
+}
+
+.fixed-top{
+    background-color: #fff;
+    border-bottom: solid #0d0d0d 4px;
 }
 
 #background {
@@ -13,24 +24,29 @@ body {
     z-index: -1;
 }
 
-.pokemon-list {
+#pokemon-list {
     list-style-type: none;
     padding: 0;
+}
+
+.list-group-item {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
 }
 
 .pokemon {
     background-color: #fff;
     color: #0d0d0d;
-    font-size: 18px;
+    font-size: 24px;
     font-family: 'Roboto Mono', monospace;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding-inline: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-transform: uppercase;
-    width: 200px;
-    height: 50px;
+    width: 250px;
+    height: 70px;
     border: solid 2px;
     transition: 0.2s background-color;
+    box-shadow: 10px 10px;
 }
 
 .pokemon:hover, .pokemon:focus {
@@ -38,49 +54,32 @@ body {
     cursor: pointer;
 }
 
-#modal-container {
-    display: none;
-}
-  
-#modal-container.is-visible {
-    position: fixed;
-    padding: 20px;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999; 
-    overflow: auto; 
-    display: grid;
-    text-align: center;
-}
 
-.modal {
-    margin: auto;
-    display: inline-block;
-    box-sizing: border-box;
+.modal-dialog {
     background: #fff;
     padding: 15px;
-    width: 100%;
-    max-width: 350px;
+    width: 450px;
+    max-height: fit-content;
     text-align: left;
     border: solid 4px;
     border-radius: 10%;
+    position: relative;
+    top: 30%;
 }
 
-.modal-close {
+.modal-header {
+    border: none;
+}
+
+
+.close {
     float: right;
-    border: 0;
-    background: #ff0000;
     color: #0d0d0d;
-    border: solid;
     transition: 0.2s background-color;
 }
 
-.modal-close:hover, .modal-close:focus {
-    background-color: #c40b0b;
+.close:hover, .modal-close:focus {
+    background-color: #ff0000;
     cursor: pointer;
 }
 
@@ -88,13 +87,16 @@ body {
     margin-top: 0;
     text-transform: uppercase;
     font-size: 40px;
+    text-align: left;
 }
   
 .modal p {
     margin-bottom: 8px;
-    font-size: 25px;
+    font-size: 30px;
+    text-align: left;
 }
 
 .modal img {
-    margin: 0 auto;
-}
+    float: left;
+} 
+

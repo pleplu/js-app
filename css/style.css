@@ -75,7 +75,6 @@ body {
     border: none;
 }
 
-
 .close {
     float: right;
     color: #0d0d0d;
@@ -88,29 +87,21 @@ body {
 }
 
 .modal h1 {
-    margin-top: 0;
     text-transform: uppercase;
     font-size: 30px;
-    text-align: left;
 }
 
 .modal img {
-    margin-top: 24px;
     float: right;
-    margin-right: 20px;
-} 
+}
 
 .pokemon-types {
-    margin-left: 20px;
-    list-style: none;
     font-size: 24px;
     text-transform: capitalize;
     text-align: left;
- 
 }
 
 .pokemon-height {
-    margin-left: 20px;
     text-align: left;
     font-size: 24px;
 }

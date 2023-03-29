@@ -120,7 +120,7 @@ let pokemonRepository = (function () {
         let pokemonImg = document.querySelector(".pokemon-img");
         pokemonImg.src = item.imageUrl;
     
-    })
+    });
   }
 
     return {

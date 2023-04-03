@@ -5,22 +5,24 @@ body {
     font-family: 'Roboto Mono', monospace;
     color: #0d0d0d;
     min-width: 440px;
-    margin-top: 20px;
+    margin-top: 110px;
     margin-bottom: 20px;
+    max-width: 1940px;
 }
 
 #pokedex-title {
-    position: fixed;
-    top: 45px;
-    left: 45px;
-    width: 600px;
+    width: 400px;
+}
+
+.fixed-top {
+    background-color: #77C8F9;
 }
 
 #background {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: -999;
 }
 
 #pokemon-list {

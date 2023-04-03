@@ -5,17 +5,15 @@ body {
     font-family: 'Roboto Mono', monospace;
     color: #0d0d0d;
     min-width: 440px;
-    margin-top: 140px;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
 #pokedex-title {
-    width: 400px;
-}
-
-.fixed-top{
-    background-color: #fff;
-    border-bottom: solid #0d0d0d 4px;
+    position: fixed;
+    top: 45px;
+    left: 45px;
+    width: 600px;
 }
 
 #background {

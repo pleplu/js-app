@@ -63,8 +63,7 @@ body {
     text-align: left;
     border: solid 4px;
     border-radius: 10%;
-    position: relative;
-    top: 30%;
+    top: 25%;
 }
 
 .modal-content {

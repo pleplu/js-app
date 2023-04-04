@@ -1,105 +1,142 @@
-// An array of different exotic weapons wrapped inside of an IIFE :
 
-// let exoticWeaponsRepository = (function () {
-//     let exoticWeapons = [
-//         {name: "Sunshot", weaponType: "Hand Cannon", energy: "Solar", ammoType: "Primary"},
-//         {name: "Riskrunner", weaponType: "SMG", energy: "Arc", ammoType: "Primary"},
-//         {name: "Fighting Lion", weaponType: "Grenade Launcher", energy: "Void", ammoType: "Special"}
-//     ];
+let pokemonRepository = (function () {
+        
+    let pokemonArray = [];
+    
+    let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=151";
 
-//     function add(weapon) {
-//         exoticWeapons.push(weapon);
-//     }
 
-//     function getAll() {
-//         return exoticWeapons;
-//     }
+    // Lets users add pokemon to the array as long as they meet the specified parameters 
+    
+    function add(pokemon) {
+        if (
+            typeof pokemon === "object" && "name" in pokemon
+        ) {
+            pokemonArray.push(pokemon);
+        } else {
+            console.log("Pokemon is not correct");
+        }
+    }
+    
+    function getAll() {
+        return pokemonArray;
+    }
+    
+        
+    // Creates a list of buttons of the pokemons' names and includes an event listener when users click said buttons that shows some of the pokemons' details
+        
+    function addListItem(pokemon) {
+        
+        let pokemonList = document.querySelector("#pokemon-list");
+        pokemonList.classList.add("list-group");
+       
+        let listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
 
-//     function addListItem(exoticWeapons) {
-//         let exoticWeaponsList = document.querySelector(".exotic-weapons-list");
-//         let listItem = document.createElement("li");
-//         let button = document.createElement("button");
-//         button.innerHTML = exoticWeapons.name;
-//         button.classList.add("exotic-weapon");
-//         listItem.appendChild(button);
-//         exoticWeaponsList.appendChild(listItem);
-//         button.addEventListener("click", function () {
-//             console.log(showDetails(exoticWeapons))
-//         });
-//     }
+        let button = document.createElement("button");
+        button.innerHTML = pokemon.name;
+        button.classList.add("pokemon");
+        button.classList.add("btn");
+        button.setAttribute('data-toggle', 'modal');
+        button.setAttribute('data-target', '.modal');
+        
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
 
-//     function showDetails(exoticWeapons) {
-//         console.log(exoticWeapons.name);
-//         console.log(exoticWeapons.weaponType)
-//     }
+        button.addEventListener("click", function () {
+            showDetails(pokemon)
+        });
+    }
+    
 
-//     return {
-//         add: add,
-//         getAll: getAll,
-//         addListItem: addListItem
-//     };
-// })();
+    // Fetches details from the API and and catches any errors
 
-// ==========================================================================================================
+    function loadList() {
+        return fetch(apiUrl).then(function (response)   {
+          return response.json();
+        }).then(function (json) {
+          json.results.forEach(function (item) {
+            let pokemon = {
+              name: item.name,
+              detailsUrl: item.url
+            };
+              add(pokemon);
+          });
+        }).catch(function (e) {
+              console.error(e);
+        })
+      }
 
-// Adds a list of buttons
+      
+      // Specifies specific details about the pokemon pulled from the API and catches any errors
+      
+      function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+          return response.json();
+        }).then(function (details) {
+          item.id = details.id;
+          item.imageUrl = details.sprites.front_default;
+          item.height = details.height;
+          item.types = details.types;
+        }).catch(function (e) {
+          console.error(e);
+        });
+      }
+    
+      
+      // A funtion thats displays pokemons' details in a modal when performed
+      
+      function showDetails(pokemon) {
+        loadDetails(pokemon).then(function () {
+          showModal(pokemon);
+        });
+      }
 
-// exoticWeaponsRepository.getAll().forEach(function(exoticWeapons) {
-//     exoticWeaponsRepository.addListItem(exoticWeapons);
-// });
 
-// ==========================================================================================================
+      // Displays a modal 
 
-// List object's names and characteristics using a "forEach" loop and a function both inside and otuside said loop as well as an arrow function:
+      function showModal(item) {
 
-// exoticWeaponsRepository.getAll().forEach(function(exoticWeapons) {
-//     document.write("<p>" + exoticWeapons.name + " : " + exoticWeapons.weaponType);
-//     if (exoticWeapons.energy === "Solar"){
-//         document.write(" - this is a solar weapon. " + "</p>");
-//     }else if (exoticWeapons.energy === "Arc"){
-//         document.write(" - this is an arc weapon. " + "</p>");
-//     }else if (exoticWeapons.energy === "Void"){
-//         document.write(" - this is a void weapon. " + "</p>");
-//     }else{
-//         document.write(" - this weapon alternates between all three energy types. " + "</p>");
-//     }
-// });
+        pokemonRepository.loadDetails(item).then(function () {
 
-// exoticWeaponsRepository.getAll().forEach( exoticWeapons => document.write("<p>" + exoticWeapons.name + "</p>"));
+        let modalNumber = document.querySelector(".modal-number")
+        modalNumber.innerHTML = "#" + item.id;
+    
+        let modalTitle = document.querySelector(".modal-title");
+        modalTitle.innerText = ". " + item.name;
 
-// function listNames(exoticWeapons) {
-//     document.write("<p>" + exoticWeapons.name + "</p>");
-// }
- 
-// exoticWeaponsRepository.getAll().forEach(listNames);
+        let pokemonHeight = document.querySelector(".pokemon-height");
+        pokemonHeight.innerHTML = "Height: " + "<br>" + (item.height/10) + "m";
 
-// ==========================================================================================================
+        let itemTypes = "";
+        item.types.forEach(function(types) {
+          itemTypes += [types.type.name + "<br>"];
+        });
 
-// Lists object's names and characteristics from the array using a "for" loop:
+        let pokemonTypes = document.querySelector(".pokemon-types");
+        pokemonTypes.innerHTML = "Types: " + "<br>" + itemTypes;
 
-// for (let i = 0; i < exoticWeaponsRepository.getAll().length; i++) {
-//     document.write("<p>" + exoticWeaponsRepository.getAll()[i].name + " : " + exoticWeaponsRepository.getAll()[i].weaponType);
-//     if (exoticWeaponsRepository.getAll()[i].energy === "Solar"){
-//         document.write(" - this is a solar weapon. " + "</p>");
-//     }else if (exoticWeaponsRepository.getAll()[i].energy === "Arc"){
-//         document.write(" - this is an arc weapon. " + "</p>");
-//     }else if (exoticWeaponsRepository.getAll()[i].energy === "Void"){
-//         document.write(" - this is a void weapon. " + "</p>");
-//     }else{
-//         document.write(" - this weapon alternates between all three energy types. " + "</p>");
-//     }
-//   }
+        let pokemonImg = document.querySelector(".pokemon-img");
+        pokemonImg.src = item.imageUrl;
+    
+    });
+  }
 
-// ==========================================================================================================
+    return {
+        add: add,
+        getAll: getAll,
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        showDetails: showDetails,
+        showModal: showModal
+        };
 
-// Lists object names from array using a function and a "for" loop:
+    })();
 
-// function printArrayDetails(list){
-//     for (let i = 0; i < list.length; i++){
-//         document.write("<p>" + list[i].name + "</p>")
-//     }
-// }
-
-// printArrayDetails(exoticWeaponsRepository.getAll());
-
-// ==========================================================================================================
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
+});

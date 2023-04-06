@@ -1,5 +1,7 @@
 body {
-    background-color: #7EAB70;
+    background: url(../img/pokemon-background-cropped.jpg) top left #7EAB70;
+    background-attachment: fixed;
+    background-repeat: repeat-x;
     text-align: center;
     font-size: 12px;
     font-family: 'Roboto Mono', monospace;
@@ -7,7 +9,6 @@ body {
     min-width: 440px;
     margin-top: 110px;
     margin-bottom: 20px;
-    max-width: 1940px;
 }
 
 #pokedex-title {
@@ -16,13 +17,6 @@ body {
 
 .fixed-top {
     background-color: #77C8F9;
-}
-
-#background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -999;
 }
 
 #pokemon-list {
